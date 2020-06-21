@@ -19,16 +19,28 @@ then {
 fi
 
 # install node + npm
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install nodejs npm
+npm --version
+if [ $? -eq 127 ] 
+then {
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install nodejs npm
+
+    echo "======================================================================================================"
+    echo "====================================== installed nodejs + npm ========================================"
+    echo "======================================================================================================"
+}
 
 # Install Vue
+vue --version
+if [ $? -eq 127 ] 
+then {
+    sudo npm install -g @vue/cli
+    sudo npm install -g @vue/cli-service-global
     echo "======================================================================================================"
     echo "=========================================== installed vue ============================================"
     echo "======================================================================================================"
-sudo npm install -g @vue/cli
-sudo npm install -g @vue/cli-service-global
+}
 
 # Install RaspAP
     echo "======================================================================================================"
