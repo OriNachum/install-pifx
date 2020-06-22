@@ -42,8 +42,6 @@ then {
     echo "======================================================================================================"
 }
 
-# Install kestrel
-
 # Install RaspAP
     echo "======================================================================================================"
     echo "========================================== installed RaspAP =========================================="
@@ -59,7 +57,7 @@ git clone https://github.com/OriNachum/vue-lifx-server.git
 # fi
 
 cd ./LifxWebClient/LifxLanController
-dotnet publish
+dotnet publish LifxLanController.sln -f netcoreapp2.2 -r linux-arm
 cd ../..
 
 # if [LifxWebClient doesn't exist]
