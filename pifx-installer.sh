@@ -58,6 +58,9 @@ git clone https://github.com/OriNachum/vue-lifx-server.git
 
 cd ./LifxWebClient/LifxLanController
 dotnet publish LifxLanController.sln -f netcoreapp2.2 -r linux-arm
+./Git/LifxWebClient/LifxLanController/ActionService/bin/Debug/netcoreapp2.2/linux-arm/ActionService &
+./Git/LifxWebClient/LifxLanController/LifxWebApi/bin/Debug/netcoreapp2.2/linux-arm/LifxWebApi &
+./Git/LifxWebClient/LifxLanController/Bishop/bin/Debug/netcoreapp2.2/linux-arm/Bishop console &
 cd ../..
 
 # if [LifxWebClient doesn't exist]
@@ -68,7 +71,10 @@ git clone https://github.com/OriNachum/LifxWebClient.git
 
 
 cd ./vue-lifx-server/hello-world
+#Fix max number of watchers
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 npm install
-vue serve
+# cd ./Git/vue-lifx-server/hello-world/
+vue serve src/main.js
 cd ../..
 
